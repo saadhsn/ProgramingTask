@@ -14,9 +14,9 @@ applying filter operation
 template <class T>
 struct _seq {
 	T* list;
-	int n;
-	_seq() {list = NULL; n=0;}
-	_seq(T* _list, int _n) : list(_list), n(_n) {}
+	int size;
+	_seq() {list = NULL; size=0;}
+	_seq(T* _list, int _n) : list(_list), size(_n) {}
 	void del() {free(list);}
 };
 
@@ -132,7 +132,8 @@ pair<L1,L2> * zip(L1* firstlist, L2* secondlist,int n) {
 /*
 This is the same zip operation, this variant is used in the case
 if the size of two list differ, for this function , size of each list
-is required in the arguments.
+is required in the arguments, merge the items of both list to the
+length of equal to smaller list in size
 
 */
 
@@ -151,7 +152,39 @@ pair<L1,L2> * zip(L1* firstlist, int a, L2* secondlist,int b) {
 }
 
 
+/*
+Below are some sample implementation of some lambdas function(aka functors)
+in case compiling the program with older C++ and older GCC.
+*/
 
+/*
+template <class L>
+struct plusOne{
+  L* A;
+  plusOne(L* AA):A(AA){}
+  L operator()(const L& a) const{return a+1;}
+
+};
+
+template<class L>
+struct sum {
+	L*A;
+	sum(L*AA):A(AA) {}
+	L operator()(const L& a, const L& b) const{return a+b;}
+};
+
+template<class L>
+struct isEven {
+	L*A;
+	isEven(L*AA):A(AA) {}
+	bool operator() (const L&a) const{
+		if(a%2==0)
+			return true;
+		else 
+			return false;
+	}
+};
+*/
 
 
 #endif //_MY_FUNCTIONAL_INCLUDED
