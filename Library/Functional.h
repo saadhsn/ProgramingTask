@@ -30,7 +30,7 @@ Map function, it accepts the list of arbitray type, size of list and func
 template<class L, class F>
 L * map (L* list,int n ,F func ) {
 
-	L* mappedlist=new L[n]; //A new list created which will be returned after applying map function
+    L* mappedlist=new L[n]; //A new list created which will be returned after applying map function
     for(int i=0;i<n;i++)
       mappedlist[i]=func(list[i]);
     return mappedlist;
@@ -44,7 +44,7 @@ applies function passed to forEach on each item of the list
 template<class L, class F>
 void foreach (L*list, int n, F func) {
 	for(int i=0;i<n;i++)
-		func(list[i]);
+	    func(list[i]);
 }
 
 /*
