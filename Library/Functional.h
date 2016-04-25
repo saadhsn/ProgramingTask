@@ -1,6 +1,9 @@
 #ifndef _MY_FUNCTIONAL_INCLUDED
 #define _MY_FUNCTIONAL_INCLUDED
 
+#include<algorithm>
+using namespace std;
+
 
 /* _seq is a custom data structure used for filtering the list
  T is the type of list passed and n is the size of the list
@@ -107,7 +110,45 @@ L foldr(L* list, int n,F func ) {
 	return r;
 }
 
+/*
+Zip operation is performed on two lists, which concatenates the
+items of two lists into pairs.
+The resuslt of merged lists is stored in pair type, which can store
+items in its first and second data members.
+*/
 
+template<class L1, class L2>
+pair<L1,L2> * zip(L1* firstlist, L2* secondlist,int n) {
+	pair<L1,L2> * merged= new pair<L1,L2> [n];
+	for(int i=0;i<n;i++) {
+		merged[i].first=firstlist[i];
+		merged[i].second=secondlist[i];
+	}
+		
+	return merged;
+
+}
+
+/*
+This is the same zip operation, this variant is used in the case
+if the size of two list differ, for this function , size of each list
+is required in the arguments.
+
+*/
+
+template<class L1, class L2>
+pair<L1,L2> * zip(L1* firstlist, int a, L2* secondlist,int b) {
+
+	int list_size=min(a,b);
+	pair<L1,L2> * merged= new pair<L1,L2> [list_size];
+	for(int i=0;i<list_size;i++) {
+		merged[i].first=firstlist[i];
+		merged[i].second=secondlist[i];
+	}
+		
+	return merged;
+
+}
 
 
 
