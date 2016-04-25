@@ -2,9 +2,11 @@
 #define _MY_FUNCTIONAL_INCLUDED
 
 
-// _seq is a custom data structure used for filtering the list
-// T is the type of list passed and n is the size of the list
-// size n is used to determine the new size of the list after applying filter operation
+/* _seq is a custom data structure used for filtering the list
+ T is the type of list passed and n is the size of the list
+ size n is used to determine the new size of the list after 
+applying filter operation
+*/
 
 template <class T>
 struct _seq {
@@ -49,7 +51,8 @@ Returns new list with entries containing only the desired items
 @list:list passed
 @n   :size of the list
 @pred: predicate function passed
-@flag:boolean array which maps the corresponding entries of list either true or false
+@flag:boolean array which maps the corresponding entries of list either 
+true or false
 */
 
 template<class L , class P>
@@ -74,9 +77,9 @@ _seq<L> filter(L* list, int n, P pred) {
 }
 
 /*
-Fold left function,technically this is called LEFT reduction/accumulation because
-the operators are applied left to right, for example:
-				reduce(lambda x,y:x-y,[1,2,3]) will return -4-->(1-2)-3
+Fold left function,technically this is called LEFT reduction/accumulation 
+because the operators are applied left to right, for example:
+reduce(lambda x,y:x-y,[1,2,3]) will return -4-->(1-2)-3
 */
 
 template<class L, class F>
@@ -88,6 +91,21 @@ L foldl(L* list, int n,F func ) {
 	return r;
 }
 
+/*
+Fold right functioin is right associative for example:
+reduce(lambda x,y:x-y,[1,2,3]) will return 2-->1-(2-3)=2
+	
+
+*/
+
+template<class L, class F>
+L foldr(L* list, int n,F func ) {
+	L r=list[n-1];
+
+	for(int i=1;i<n;i++)
+		r=func(list[n-1-i],r);
+	return r;
+}
 
 
 
