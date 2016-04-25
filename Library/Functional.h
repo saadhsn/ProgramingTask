@@ -21,7 +21,7 @@ struct _seq {
 };
 
 /*
-Map function, it accepts the list of arbitray type, size of list and func
+Map function, it accepts the list of arbitrary type, size of list and func
 @list : list passed to function
 @n    : size of the list
 @func : function passed to map function
@@ -97,8 +97,6 @@ L foldl(L* list, int n,F func ) {
 /*
 Fold right functioin is right associative for example:
 reduce(lambda x,y:x-y,[1,2,3]) will return 2-->1-(2-3)=2
-	
-
 */
 
 template<class L, class F>
@@ -153,7 +151,7 @@ pair<L1,L2> * zip(L1* firstlist, int a, L2* secondlist,int b) {
 
 
 /*
-Below are some sample implementation of some lambdas function(aka functors)
+Below are some sample implementation of lambdas function(aka functors)
 in case compiling the program with older C++ and older GCC.
 */
 
