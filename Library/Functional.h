@@ -40,6 +40,33 @@ void foreach (L*list, int n, F func) {
 		func(list[i]);
 }
 
+/*
+Filter function takes list as input, and predicate function.
+It then removes the item from lists which are false for predicate
+Returns new list with entries containing only the desired items
+
+*/
+
+template<class L , class P>
+_seq<L> filter(L* list, int n, P pred) {
+	int compact=0; //size of the compact list
+	int counter=0; //to fill the entries in new list
+	bool* flag=new bool[n];
+	for(int i=0;i<n;i++) {
+		flag[i]=(bool)pred(list[i]);
+		if(flag[i])
+			compact++;
+	}
+	L* filteredList=new L[compact];
+	for(int i=0;i<n;i++) {
+		if(flag[i]) {
+			filteredList[counter]=list[i];
+			counter++;
+		}
+	}
+	free (flag); //Removing the helper boolean list to mark filtered list
+	return _seq<L>(filteredList,compact);
+}
 
 
 
