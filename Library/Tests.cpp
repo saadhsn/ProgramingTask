@@ -7,7 +7,7 @@ using namespace std;
 /*
 Below are the anonymous functions in C++, these works in the same way as 
 funtion object(aka functor) is created and passed to function argument, 
-anonymous functions works with standard C++11.
+anonymous functions works with standard C++11 features.
 */
 
 	
