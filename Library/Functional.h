@@ -24,11 +24,13 @@ Map function, it accepts the list of arbitray type, size of list and func
 
 template<class L, class F>
 L * map (L* list,int n ,F func ) {
-	for(int i=0;i<n;i++)
-		list[i]=func(list[i]);
-	return list;
-}
 
+	L* mappedlist=new L[n]; //A new list created which will be returned after applying map function
+    for(int i=0;i<n;i++)
+      mappedlist[i]=func(list[i]);
+    return mappedlist;
+
+}
 /*
 forEach function similar to map function
 applies function passed to forEach on each item of the list
@@ -44,7 +46,10 @@ void foreach (L*list, int n, F func) {
 Filter function takes list as input, and predicate function.
 It then removes the item from lists which are false for predicate
 Returns new list with entries containing only the desired items
-
+@list:list passed
+@n   :size of the list
+@pred: predicate function passed
+@flag:boolean array which maps the corresponding entries of list either true or false
 */
 
 template<class L , class P>
@@ -64,9 +69,26 @@ _seq<L> filter(L* list, int n, P pred) {
 			counter++;
 		}
 	}
-	free (flag); //Removing the helper boolean list to mark filtered list
+	free (flag); //Removing the helper boolean list
 	return _seq<L>(filteredList,compact);
 }
+
+/*
+Fold left function,technically this is called LEFT reduction/accumulation because
+the operators are applied left to right, for example:
+				reduce(lambda x,y:x-y,[1,2,3]) will return -4-->(1-2)-3
+*/
+
+template<class L, class F>
+L foldl(L* list, int n,F func ) {
+	L r=list[0];
+
+	for(int i=1;i<n;i++)
+		r=func(r,list[i]);
+	return r;
+}
+
+
 
 
 
