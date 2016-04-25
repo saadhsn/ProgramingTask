@@ -61,9 +61,9 @@ int main() {
 
 	pair<int,int>* mergedlist=zip(myIntList1,myIntList2,10);
 	cout<<"Zipped list results"<<endl;
-    for(int i=0;i<10;i++) {
-		cout<<mergedlist[i].first<<","<<mergedlist[i].second<<endl;
-    }
+    	for(int i=0;i<10;i++) {
+	  cout<<mergedlist[i].first<<","<<mergedlist[i].second<<endl;
+    	}
 
 	return 0;
 
